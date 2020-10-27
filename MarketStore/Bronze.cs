@@ -11,7 +11,7 @@
 		}
 
 		public override decimal DiscountRate { get => this.CalculateDiscountRate(); }
-
+		
 		protected override decimal CalculateDiscountRate()
 		{
 			if (this.Turnover >= 100 && this.Turnover <= 300)

@@ -1,14 +1,48 @@
 ﻿namespace MarketStore
 {
+	using System;
 	using System.Text;
 
 	public abstract class DiscountCard
 	{
+		private decimal purchaseValue;
+		private decimal turnover;
+
 		public string Owner { get; set; }
 
-		public decimal PurchaseValue { get; set; }
+		public decimal PurchaseValue 
+		{
+			get
+			{
+				return this.purchaseValue;
+			}
+			set
+			{
+				if (value <= 0)
+				{
+					throw new ArgumentException("Purchase value cannot be negative or zero.");
+				}
 
-		public decimal Turnover { get; set; }
+				purchaseValue = value;
+			}
+		}
+
+		public decimal Turnover 
+		{
+			get
+			{
+				return turnover;
+			}
+			set
+			{
+				if (value < 0)
+				{
+					throw new ArgumentException("Turnover cannot be negative.");
+				}
+
+				turnover = value;
+			}
+		}
 
 		public abstract decimal DiscountRate { get; }
 
